@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1039776702029",
+    "project_id": "helth-8c065",
+    "storage_bucket": "helth-8c065.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039776702029:android:f88916b0aef15b3e648604",
+        "android_client_info": {
+          "package_name": "com.example.health"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNdGiuSJLbt0bAw6Q6qufCp8E3iP39VkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
