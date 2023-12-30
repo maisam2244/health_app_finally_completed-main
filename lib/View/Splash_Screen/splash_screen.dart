@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:health/Resources/Button/mybutton.dart';
 import 'package:health/View/Provider_Authentication/provider_login.dart';
 import 'package:health/View/User_Authentication/user_login.dart';
@@ -15,37 +14,45 @@ class Splash_Screen extends StatefulWidget {
 }
 
 class _Splash_ScreenState extends State<Splash_Screen> {
+  String selectedLanguage = 'English';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
         title: Text('Harees'),
         actions: [
-          TextButton(
-            onPressed: () {
+          DropdownButton<String>(
+            value: selectedLanguage,
+            onChanged: (String? newValue) {
               setState(() {
-                Get.updateLocale(Locale('en', "EN"));
+                selectedLanguage = newValue!;
+                // Perform language change logic here
+                if (selectedLanguage == 'Arabic') {
+                  Get.updateLocale(Locale('ar', 'AE'));
+                } else if (selectedLanguage == 'English') {
+                  Get.updateLocale(Locale('en', 'US'));
+                }
+                print('Selected Language: $selectedLanguage');
               });
             },
-            child: Text(
+            items: <String>[
               'English',
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
-          SizedBox(width: 16),
-          TextButton(
-            onPressed: () {
-              setState(() {
-                Get.updateLocale(Locale('ar', "AE"));
-              });
-              // Add your Arabic button logic here
-            },
-            child: Text(
               'Arabic',
-              style: TextStyle(color: Colors.black),
-            ),
+            ]
+                .map<DropdownMenuItem<String>>(
+                  (String value) => DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(
+                      value.tr,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                )
+                .toList(),
           ),
         ],
       ),
@@ -87,7 +94,10 @@ class _Splash_ScreenState extends State<Splash_Screen> {
                 onTap: () {
                   Get.to(() => Provider_login());
                 },
-              )
+              ),
+              SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),

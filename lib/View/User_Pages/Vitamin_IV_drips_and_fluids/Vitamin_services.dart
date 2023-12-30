@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import 'package:health/Chat_App/Models/user_models.dart';
 import 'package:health/View/User_Pages/Home_page/home_page.dart';
+import 'package:health/View/User_Pages/Vitamin_IV_drips_and_fluids/Providers_availability.dart';
 
 class VitaminServices extends StatefulWidget {
   final String address;
@@ -101,6 +102,479 @@ class _VitaminServicesState extends State<VitaminServices> {
                   child: Column(
                     children: [
                       ListTile(
+                        onTap: () {
+                          Get.to(() => ProvidersAvailability());
+                        },
+                        leading: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 169, 214, 246),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Image(
+                            image: AssetImage("assets/images/vitamin.png"),
+                          ),
+                        ),
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Healthy hair",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                            Icon(
+                              Icons.circle_outlined,
+                              color: Colors.blue,
+                            ),
+                          ],
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("To restore energy"),
+                            Text("build proteins support"),
+                            Text("antioxidants, and"),
+                            Text("increase productivity"),
+                            Text("starting from 1300 SAR"),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        width: 340,
+                        height: 130,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 169, 214, 246),
+                          borderRadius: BorderRadius.circular(12),
+                        ), // Adjusted height
+                        // Adjust the color as needed
+                        child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  "Vitamin B12, Vitamin C, Magnesium",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "Sulphate, Potassium Chloride",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "To restore energy,",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "To restore energy,",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "To restore energy,",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ],
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: 370,
+                height: 300, // Adjusted height
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      ListTile(
+                        onTap: () {
+                          Get.to(() => ProvidersAvailability());
+                        },
+                        leading: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 169, 214, 246),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Image(
+                            image: AssetImage("assets/images/vitamin.png"),
+                          ),
+                        ),
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Hydration",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                            Icon(
+                              Icons.circle_outlined,
+                              color: Colors.blue,
+                            ),
+                          ],
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("To restore energy"),
+                            Text("build proteins support"),
+                            Text("antioxidants, and"),
+                            Text("increase productivity"),
+                            Text("starting from 1300 SAR"),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        width: 340,
+                        height: 130,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 169, 214, 246),
+                          borderRadius: BorderRadius.circular(12),
+                        ), // Adjusted height
+                        // Adjust the color as needed
+                        child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  "Vitamin B12, Vitamin C, Magnesium",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "Sulphate, Potassium Chloride",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "To restore energy,",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "To restore energy,",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "To restore energy,",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ],
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: 370,
+                height: 300, // Adjusted height
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      ListTile(
+                        onTap: () {
+                          Get.to(() => ProvidersAvailability());
+                        },
+                        leading: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 169, 214, 246),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Image(
+                            image: AssetImage("assets/images/vitamin.png"),
+                          ),
+                        ),
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Jet Lag",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                            Icon(
+                              Icons.circle_outlined,
+                              color: Colors.blue,
+                            ),
+                          ],
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("To restore energy"),
+                            Text("build proteins support"),
+                            Text("antioxidants, and"),
+                            Text("increase productivity"),
+                            Text("starting from 1300 SAR"),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        width: 340,
+                        height: 130,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 169, 214, 246),
+                          borderRadius: BorderRadius.circular(12),
+                        ), // Adjusted height
+                        // Adjust the color as needed
+                        child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  "Vitamin B12, Vitamin C, Magnesium",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "Sulphate, Potassium Chloride",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "To restore energy,",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "To restore energy,",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "To restore energy,",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ],
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: 370,
+                height: 300, // Adjusted height
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      ListTile(
+                        onTap: () {
+                          Get.to(() => ProvidersAvailability());
+                        },
+                        leading: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 169, 214, 246),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Image(
+                            image: AssetImage("assets/images/vitamin.png"),
+                          ),
+                        ),
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Post Sleeve Gastrectomy",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                            Icon(
+                              Icons.circle_outlined,
+                              color: Colors.blue,
+                            ),
+                          ],
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("To restore energy"),
+                            Text("build proteins support"),
+                            Text("antioxidants, and"),
+                            Text("increase productivity"),
+                            Text("starting from 1300 SAR"),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        width: 340,
+                        height: 130,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 169, 214, 246),
+                          borderRadius: BorderRadius.circular(12),
+                        ), // Adjusted height
+                        // Adjust the color as needed
+                        child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  "Vitamin B12, Vitamin C, Magnesium",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "Sulphate, Potassium Chloride",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "To restore energy,",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "To restore energy,",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "To restore energy,",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ],
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: 370,
+                height: 300, // Adjusted height
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      ListTile(
+                        onTap: () {
+                          Get.to(() => ProvidersAvailability());
+                        },
+                        leading: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 169, 214, 246),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Image(
+                            image: AssetImage("assets/images/vitamin.png"),
+                          ),
+                        ),
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Antiaging",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                            Icon(
+                              Icons.circle_outlined,
+                              color: Colors.blue,
+                            ),
+                          ],
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("To restore energy"),
+                            Text("build proteins support"),
+                            Text("antioxidants, and"),
+                            Text("increase productivity"),
+                            Text("starting from 1300 SAR"),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        width: 340,
+                        height: 130,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 169, 214, 246),
+                          borderRadius: BorderRadius.circular(12),
+                        ), // Adjusted height
+                        // Adjust the color as needed
+                        child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  "Vitamin B12, Vitamin C, Magnesium",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "Sulphate, Potassium Chloride",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "To restore energy,",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "To restore energy,",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text(
+                                  "To restore energy,",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ],
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: 370,
+                height: 300, // Adjusted height
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      ListTile(
+                        onTap: () {
+                          Get.to(() => ProvidersAvailability());
+                        },
                         leading: Container(
                           width: 50,
                           height: 50,

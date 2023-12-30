@@ -100,6 +100,8 @@ class Language extends Translations {
           "Pending appointments": "Pending appointments",
           "Your result": "Your result",
           "Upload Results": "Upload Results",
+          "Arabic": "Arabic",
+          "English": "English",
         },
         "ar_AE": {
           "Nurse visit": "زيارة تمريض",
@@ -194,6 +196,8 @@ class Language extends Translations {
           "Pending appointments": "مواعيد معلقة",
           "Your result": "نتيجتك",
           "Upload Results": "تحميل نتيجتك",
+          "Arabic": "العربية",
+          "English": "إنجليزي"
         }
       };
 }

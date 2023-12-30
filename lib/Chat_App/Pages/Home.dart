@@ -12,7 +12,8 @@ class Home extends StatefulWidget {
   final UserModel userModel;
   final User firebaseUser;
 
-  const Home({Key? key, required this.userModel, required this.firebaseUser}) : super(key: key);
+  const Home({Key? key, required this.userModel, required this.firebaseUser})
+      : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -47,28 +48,36 @@ class _HomeState extends State<Home> {
       body: SafeArea(
         child: Container(
           child: StreamBuilder(
-            stream: FirebaseFirestore.instance.collection("Chat Rooms").where("participants.${widget.userModel.uid}", isEqualTo: true).snapshots(),
+            stream: FirebaseFirestore.instance
+                .collection("Chat Rooms")
+                .where("participants.${widget.userModel.uid}", isEqualTo: true)
+                .snapshots(),
             builder: (context, snapshot) {
-              if(snapshot.connectionState == ConnectionState.active) {
-                if(snapshot.hasData) {
-                  QuerySnapshot chatRoomSnapshot = snapshot.data as QuerySnapshot;
+              if (snapshot.connectionState == ConnectionState.active) {
+                if (snapshot.hasData) {
+                  QuerySnapshot chatRoomSnapshot =
+                      snapshot.data as QuerySnapshot;
 
                   return ListView.builder(
-                    
                     itemCount: chatRoomSnapshot.docs.length,
                     itemBuilder: (context, index) {
-                      ChatRoomModel chatRoomModel = ChatRoomModel.fromMap(chatRoomSnapshot.docs[index].data() as Map<String, dynamic>);
+                      ChatRoomModel chatRoomModel = ChatRoomModel.fromMap(
+                          chatRoomSnapshot.docs[index].data()
+                              as Map<String, dynamic>);
 
-                      Map<String, dynamic> participants = chatRoomModel.participants!;
+                      Map<String, dynamic> participants =
+                          chatRoomModel.participants!;
 
                       List<String> participantKeys = participants.keys.toList();
                       participantKeys.remove(widget.userModel.uid);
 
                       return FutureBuilder(
-                        future: FirebaseHelper.getUserModelById(participantKeys[0]),
+                        future:
+                            FirebaseHelper.getUserModelById(participantKeys[0]),
                         builder: (context, userData) {
-                          if(userData.connectionState == ConnectionState.done) {
-                            if(userData.data != null) {
+                          if (userData.connectionState ==
+                              ConnectionState.done) {
+                            if (userData.data != null) {
                               UserModel targetUser = userData.data as UserModel;
 
                               return Card(
@@ -88,39 +97,45 @@ class _HomeState extends State<Home> {
                                     );
                                   },
                                   leading: CircleAvatar(
-                                    backgroundImage: NetworkImage(targetUser.profilePic.toString()),
+                                    backgroundImage: NetworkImage(
+                                        targetUser.profilePic.toString()),
                                   ),
                                   title: Text(targetUser.fullname.toString()),
-                                  subtitle: (chatRoomModel.lastMessage.toString() != "") ? Text(chatRoomModel.lastMessage.toString()) : Text("Say hi to your new friend!", style: TextStyle(
-                                    color: Theme.of(context).colorScheme.secondary,
-                                  ),),
+                                  subtitle: (chatRoomModel.lastMessage
+                                              .toString() !=
+                                          "")
+                                      ? Text(
+                                          chatRoomModel.lastMessage.toString())
+                                      : Text(
+                                          "Say hi to your new friend!",
+                                          style: TextStyle(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .secondary,
+                                          ),
+                                        ),
                                 ),
                               );
-                            }
-                            else {
+                            } else {
                               return Container();
                             }
-                          }
-                          else {
+                          } else {
                             return Container();
                           }
                         },
                       );
                     },
                   );
-                }
-                else if(snapshot.hasError) {
+                } else if (snapshot.hasError) {
                   return Center(
                     child: Text(snapshot.error.toString()),
                   );
-                }
-                else {
+                } else {
                   return Center(
                     child: Text("No Chats"),
                   );
                 }
-              }
-              else {
+              } else {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
@@ -133,7 +148,8 @@ class _HomeState extends State<Home> {
         backgroundColor: MyColors.purple,
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return SearchPage(userModel: widget.userModel, firebaseUser: widget.firebaseUser);
+            return SearchPage(
+                userModel: widget.userModel, firebaseUser: widget.firebaseUser);
           }));
         },
         child: Icon(Icons.search),

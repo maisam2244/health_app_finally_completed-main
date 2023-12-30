@@ -1,130 +1,9 @@
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:health/Resources/Button/mybutton.dart';
-// import 'package:health/Resources/TextField/MyTextField.dart';
-// import 'package:health/Resources/Utils/utils.dart';
-// import 'package:health/Video_Call/joincall.dart';
-// import 'package:health/View/User_Authentication/user_register.dart';
-
-// class LoginScreen extends StatefulWidget {
-//   LoginScreen({
-//     Key? key,
-//   }) : super(key: key);
-
-//   @override
-//   State<LoginScreen> createState() => _LoginScreenState();
-// }
-
-// class _LoginScreenState extends State<LoginScreen> {
-//   final emailController = TextEditingController();
-//   final passwordController = TextEditingController();
-//   final _FormKey = GlobalKey<FormState>();
-//   final FirebaseAuth _auth = FirebaseAuth.instance;
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea(
-//         child: Scaffold(
-//             body: Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 20),
-//       child: SingleChildScrollView(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           children: [
-//             const SizedBox(
-//               height: 40,
-//             ),
-//             Container(
-//                 height: 200,
-//                 width: 200,
-//                 decoration: BoxDecoration(
-//                   borderRadius: BorderRadius.circular(50),
-//                 ),
-//                 child: CircleAvatar(
-//                     backgroundImage:
-//                         AssetImage("assets/logo/harees_logo.png"))),
-//             const SizedBox(
-//               height: 40,
-//             ),
-//             Form(
-//                 key: _FormKey,
-//                 child: Column(children: [
-//                   MyTextField(
-//                       controller: emailController,
-//                       obscureText: false,
-//                       labelText: "Email".tr,
-//                       conditionText: "Email cannot be empty".tr),
-//                   MyTextField(
-//                       controller: passwordController,
-//                       obscureText: true,
-//                       labelText: "Password".tr,
-//                       conditionText: "Password cannot be empty".tr),
-//                 ])),
-//             const SizedBox(height: 50),
-//             RoundButton(
-//                 text: "Login".tr,
-//                 onTap: () {
-//                   if (_FormKey.currentState!.validate()) {
-//                     _auth
-//                         .signInWithEmailAndPassword(
-//                             email: emailController.text.toString(),
-//                             password: passwordController.text.toString())
-
-//                     //     .then((value) {
-//                     //   Utils().toastMessage(value.user!.email.toString());
-//                     //   Navigator.push(context,
-//                     //       MaterialPageRoute(builder: (context) => HomePage()));
-
-//                     // })
-
-//                     .then((value) {
-//                       Utils().toastMessage(value.user!.email.toString());
-//                       Navigator.push(
-//                         context,
-//                         MaterialPageRoute(
-//                           builder: (context) => JoinCall(userEmail: value.user!.email.toString()),
-//                         ),
-//                       );
-//                     })
-
-//                     .onError((error, stackTrace) {
-//                       Utils().toastMessage(error.toString());
-//                     });
-//                   }
-//                 }),
-//             const SizedBox(
-//               height: 25,
-//             ),
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                  Text(
-//                   "Not a member?".tr,
-//                   style: TextStyle(fontSize: 20),
-//                 ),
-//                 TextButton(
-//                     onPressed: () {
-//                       Navigator.push(
-//                           context,
-//                           MaterialPageRoute(
-//                               builder: (context) => RegisterPage()));
-//                     },
-//                     child: Text("Register Now".tr,
-//                         style: TextStyle(fontSize: 20)))
-//               ],
-//             ),
-//           ],
-//         ),
-//       ),
-//     )));
-//   }
-// }
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:health/Chat_App/Models/ui_helper.dart';
 import 'package:health/Chat_App/Models/user_models.dart';
 import 'package:health/Google_Auth/auth_service.dart';
@@ -166,6 +45,14 @@ class _LoginScreenState extends State<LoginScreen> {
     } on FirebaseAuthException catch (ex) {
       Navigator.pop(context);
 
+      // Display a Get.snackbar with an error message
+      Get.snackbar(
+        "Login Error",
+        ex.message!,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+
       print(ex.message.toString());
     }
 
@@ -176,6 +63,20 @@ class _LoginScreenState extends State<LoginScreen> {
           .collection("Registered Users")
           .doc(uid)
           .get();
+
+      if (!userData.exists) {
+        // User is not registered, display a Get.snackbar with an error message
+        Get.snackbar(
+          "Login Error",
+          "This email is not registered.",
+          backgroundColor: Colors.white,
+          colorText: Colors.black,
+        );
+
+        Navigator.pop(context);
+        return;
+      }
+
       UserModel userModel =
           UserModel.frommap(userData.data() as Map<String, dynamic>);
 
@@ -187,7 +88,9 @@ class _LoginScreenState extends State<LoginScreen> {
         context,
         MaterialPageRoute(builder: (context) {
           return HomePage(
-              userModel: userModel, firebaseUser: credential!.user!);
+            userModel: userModel,
+            firebaseUser: credential!.user!,
+          );
         }),
       );
     }

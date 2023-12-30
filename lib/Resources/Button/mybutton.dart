@@ -19,7 +19,7 @@ class RoundButton extends StatelessWidget {
           height: 60,
           width: 250,
           decoration: BoxDecoration(
-            color: MyColors.purple,
+            color: Colors.blue[200],
             borderRadius: BorderRadius.circular(50),
           ),
           child: Center(
@@ -30,7 +30,10 @@ class RoundButton extends StatelessWidget {
                   )
                 : Text(
                     text,
-                    style: TextStyle(fontSize: 24, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
                   ),
           )),
     );

@@ -168,10 +168,39 @@ class _User_RegisterState extends State<User_Register> {
     UIHelper.showLoadingDialog(context, "Creating new account..");
 
     try {
+      // Check if the user already exists
+      User? existingUser = await FirebaseAuth.instance
+          .fetchSignInMethodsForEmail(email)
+          .then((methods) {
+        return methods.isNotEmpty ? FirebaseAuth.instance.currentUser : null;
+      });
+
+      if (existingUser != null) {
+        Navigator.pop(context);
+
+        // Display a Get.snackbar with an error message
+        Get.snackbar(
+          "Sign Up Error",
+          "The email address is already in use by another account.",
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+        );
+        return;
+      }
+
+      // If the user does not exist, create a new account
       credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (ex) {
       Navigator.pop(context);
+
+      // Display a Get.snackbar with an error message
+      Get.snackbar(
+        "Sign Up Error",
+        ex.message!,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
 
       print(ex.message.toString());
     }

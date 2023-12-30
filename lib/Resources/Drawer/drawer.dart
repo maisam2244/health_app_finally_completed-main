@@ -10,11 +10,13 @@ import 'package:health/Resources/AppColors/app_colors.dart';
 class MyDrawer extends StatefulWidget {
   final UserModel userModel;
   final User firebaseUser;
-  
+
   void Function()? ontap;
   MyDrawer({
     Key? key,
-    this.ontap, required this.userModel, required this.firebaseUser,
+    this.ontap,
+    required this.userModel,
+    required this.firebaseUser,
   }) : super(key: key);
 
   @override
@@ -46,7 +48,9 @@ class _MyDrawerState extends State<MyDrawer> {
             leading: Icon(Icons.chat),
             title: Text("Chats".tr),
             onTap: () {
-              Get.to(() => Home(userModel: widget.userModel, firebaseUser: widget.firebaseUser));
+              Get.to(() => Home(
+                  userModel: widget.userModel,
+                  firebaseUser: widget.firebaseUser));
             },
           ),
           ListTile(

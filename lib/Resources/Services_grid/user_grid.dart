@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:health/View/Provider_services/Accepted_requests/accepted_requests.dart';
 import 'package:health/View/User_services/About_Us/aboutus.dart';
 import 'package:health/View/User_services/Contact_us/user_contact_us.dart';
+import 'package:health/View/User_services/FAQ/faq_page.dart';
+import 'package:health/View/User_services/Family/family.dart';
 import 'package:health/View/User_services/Results/results.dart';
 import 'package:health/View/User_services/User_appointments/User_appointments.dart';
 
@@ -79,7 +81,16 @@ class UserServicesGrid extends StatelessWidget {
         UserGridServices(
           serviceIcon: Icons.family_restroom,
           serviceName: "Family".tr,
-          onPressed: () {},
+          onPressed: () {
+            Get.to(() => Family());
+          },
+        ),
+        UserGridServices(
+          serviceIcon: Icons.question_answer,
+          serviceName: "FAQ".tr,
+          onPressed: () {
+            Get.to(() => FAQ());
+          },
         ),
         UserGridServices(
           serviceIcon: Icons.info,

@@ -4,6 +4,8 @@ import 'package:health/View/Provider_services/Accepted_requests/accepted_request
 import 'package:health/View/Provider_services/Contact_Us/provider_contact_us.dart';
 import 'package:health/View/Provider_services/Result_upload/result_upload.dart';
 import 'package:health/View/User_services/About_Us/aboutus.dart';
+import 'package:health/View/User_services/FAQ/faq_page.dart';
+import 'package:health/View/User_services/Family/family.dart';
 
 import '../../View/Provider_services/Users_requests/user_requests.dart';
 
@@ -80,13 +82,22 @@ class MoreServicesGrid extends StatelessWidget {
         ServiceIconButton(
           serviceIcon: Icons.family_restroom,
           serviceName: "Family".tr,
-          onPressed: () {},
+          onPressed: () {
+            Get.to(() => Family());
+          },
         ),
         ServiceIconButton(
           serviceIcon: Icons.info,
           serviceName: "About us".tr,
           onPressed: () {
             Get.to(() => AboutUsPage());
+          },
+        ),
+        ServiceIconButton(
+          serviceIcon: Icons.question_answer,
+          serviceName: "FAQ".tr,
+          onPressed: () {
+            Get.to(() => FAQ());
           },
         ),
       ],
