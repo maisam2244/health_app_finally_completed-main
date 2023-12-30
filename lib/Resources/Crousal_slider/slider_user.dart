@@ -74,7 +74,8 @@ class CarouselExample extends StatelessWidget {
           Colors.white,
           Icons.opacity_outlined,
           "Vitamin IV drips and fluids".tr,
-          () => Get.to(() => Vitamin()),
+          () => Get.to(
+              () => Vitamin(userModel: userModel, firebaseUser: firebaseUser)),
         ),
       ],
     );
